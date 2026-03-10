@@ -15,6 +15,7 @@ export default defineConfig({
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     navigationTimeout: 90000,
+ignoreHTTPSErrors: true,
 
     launchOptions: {
       args: [

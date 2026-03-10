@@ -12,3 +12,4 @@ test-examples/
 example.*
 /logs
 *.log
+test.spec.ts
