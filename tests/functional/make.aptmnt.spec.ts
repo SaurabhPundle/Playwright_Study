@@ -1,9 +1,17 @@
 import { test, expect } from "@playwright/test";
+import { log } from "../helpers/logger";
 
 test.describe("Make Appointment functionality", () => {
-  test.beforeEach("Login with valid cred", async ({ page }) => {
+  test.beforeEach("Login with valid cred", async ({ page }, testInfo) => {
     // Launch url and verify title and header text
-    await page.goto("https://katalon-demo-cura.herokuapp.com/");
+    // get url from config
+    const envConfig = testInfo.project.use as any; // cast to any to access custom config properties
+    await page.goto(envConfig.appURL);
+
+    // custom logger example
+    await log("Info",`Launching web app in ${envConfig.envName} environment`);
+  
+    // await page.goto("https://katalon-demo-cura.herokuapp.com/");
     await expect(page).toHaveTitle("CURA Healthcare Service");
     await expect(page.locator(".text-vertical-center h1")).toHaveText(
       "CURA Healthcare Service",
@@ -14,15 +22,21 @@ test.describe("Make Appointment functionality", () => {
       page.getByText("Please login to make appointment."),
     ).toBeVisible();
     // Login with valid credentials
-    await page.getByLabel("Username").fill("John Doe");
+    console.log("ENV DEBUG:", process.env.TEST_USER_NAME);
+    await page.getByLabel("Username").fill(process.env.TEST_USER_NAME);
     await page.getByLabel("Username").press("Tab");
-    await page.getByLabel("Password").fill("ThisIsNotAPassword");
+    await page.getByLabel("Password").fill(process.env.TEST_PASSWORD);
     await page.getByRole("button", { name: "Login" }).click();
+
+    // assertion after login
+    await expect(page.locator("h2")).toHaveText("Make Appointment");
+// custom log example
+    await log("Info","Logged in successfully, ready to make appointment");
+    await log("Error","This is an error log example, just for demonstration purposes");
   });
 
-  test("Should make an appointment with non-default values", async ({
-    page,
-  }) => {
+  test("Should make an appointment with non-default values", async ({page},testInfo) => {
+    console.log(`curr config at runtime:${JSON.stringify(testInfo.config)}`);
     // dropdown
     await page
       .getByLabel("Facility")

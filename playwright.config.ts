@@ -1,16 +1,37 @@
 import { defineConfig, devices } from "@playwright/test";
-import { suite } from "node:test";
-import { release } from "os";
 
-export default defineConfig({
+/* Read environment variables from .env file. See
+
+*/
+
+import dotenv from "dotenv";
+dotenv.config();
+import path from "path";
+
+dotenv.config({ path: path.resolve(process.cwd(), ".env") });
+
+console.log("Hello from config file 👏");
+
+export const baseConfig = defineConfig({
   testDir: "./tests",
-  timeout: 80000,
-  fullyParallel: true,
+
+  globalTimeout: 3 * 60 * 60 * 1000, // 3 hrs
+  timeout: 80_000,
+
+  fullyParallel: false,
+  
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
+
+  expect: {
+    timeout: 5_000,
+  },
+  globalSetup: require.resolve("./tests/helpers/global-setup"),
+  globalTeardown: require.resolve("./tests/helpers/global-teardown"),
+
   reporter: [
-    ["html"],
+    ["html", { open: "never" }],
     [
       "allure-playwright",
       {
@@ -30,17 +51,9 @@ export default defineConfig({
     headless: false,
     video: "off",
     trace: "retain-on-failure",
-    screenshot: "only-on-failure",
-    navigationTimeout: 90000,
-    ignoreHTTPSErrors: true,
-
-    launchOptions: {
-      args: [
-        "--disable-features=ChromeWhatsNewUI",
-        "--disable-infobars",
-        "--disable-notifications",
-      ],
-    },
+    screenshot: "on",
+    navigationTimeout: 80_000,
+    actionTimeout: 10_000,
   },
 
   projects: [
@@ -49,17 +62,38 @@ export default defineConfig({
       use: {
         browserName: "chromium",
         ...devices["Desktop Chrome"],
-        headless: false, // set true in CI
-        viewport: { width: 1920, height: 1080 },
+        headless: false,
+        // viewport: null,
+
+        ignoreHTTPSErrors: true,
+
+        // launchOptions: {
+        //   args: [
+        //     "--disable-features=ChromeWhatsNewUI",
+        //     "--disable-infobars",
+        //     "--disable-notifications",
+        //     "--start-maximized",
+        //   ],
+        // },
       },
     },
+
+    // Optional browsers
     // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
+    //   name: "Firefox",
+    //   use: {
+    //     ...devices["Desktop Firefox"],
+    //     ignoreHTTPSErrors: true,
+    //   },
     // },
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    // },
+//     {
+//       name: "Webkit",
+//       use: { ...devices["Desktop Safari"],ignoreHTTPSErrors: true, },
+      
+//     },
+// {
+//   name: "Galaxy A55",
+//   use:{...devices["Galaxy A55"]}
+// }
   ],
 });

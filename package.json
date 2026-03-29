@@ -3,6 +3,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "test:nopcome2e": "npx playwright test --config=config/test.playwright.config.ts tests/e2e/nopcom.e2e.spec.ts --headed",
+    "play2": "cross-env RUNNER=LOCAL npx playwright test debug/play2.ts",
+    "dev:make-aptmnt": "npx playwright test --config=config/dev.playwright.config.ts tests/functional/make.aptmnt.spec.ts",
+    "test:make-aptmnt": "npx playwright test --config=config/test.playwright.config.ts tests/functional/make.aptmnt.spec.ts",
+    "para-make-aptmnt": "cross-env RUNNER=LOCAL npx playwright test tests/demo/para.make.aptmnt.spec.ts --headed",
+    "login:global": "cross-env RUNNER=LOCAL npx playwright test tests/functional/login.spec.ts",
+    "hooks": "npx playwright test tests/demo/hooks-demo.spec.ts",
+    "adv-cap": "cross-env DEBUG=pw:api npx playwright test tests/demo/adv.cap.login.spec.ts",
+    "demo:tag": "npx playwright test --grep @smoke",
+    "screenshot": "npx playwright test tests/demo/capture.screenshot.make.aptmnt.spec.ts",
     "debug:trace": "npx playwright test tests/demo/debug.make.aptmnt.spec.ts --trace on",
     "debug:cli": "PWDEBUG=1 npx playwright test tests/demo/debug.make.aptmnt.spec.ts",
     "debug:ui": "npx playwright test tests/demo/debug.make.aptmnt.spec.ts --ui",
@@ -11,7 +21,8 @@
     "ele-int": "npx playwright test tests/demo/ele.handling.spec.ts",
     "test": "npx playwright test",
     "make-aptmnt": "npx playwright test tests/functional/make.aptmnt.spec.ts",
-    "login": "npx playwright test tests/functional/login.spec.ts"
+    "login": "npx playwright test tests/functional/login.spec.ts",
+    "myTest": "npx playwright test tests/demo/mytest.spec.ts --headed"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +31,12 @@
   "devDependencies": {
     "@playwright/test": "^1.54.1",
     "@types/node": "^24.0.15",
-    "allure-playwright": "^3.6.0"
+    "allure-playwright": "^3.6.0",
+    "chalk": "^5.6.2",
+    "cross-env": "^10.1.0",
+    "csv-parse": "^6.2.1",
+    "dotenv": "^17.3.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.2"
   }
 }
