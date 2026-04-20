@@ -3,7 +3,9 @@ import path from "path";
 import fileHelper from "../helpers/file-helper";
 
 // const makeApptTestData = TestData.makeAppointmentTestData(); // return three objects of data
-const csvFilePath = path.resolve(`${process.cwd()}/data/functional/make-aptmnt-test-data.csv`);
+const csvFilePath = path.resolve(
+  `${process.cwd()}/data/functional/make-aptmnt-test-data.csv`,
+);
 const makeApptTestData = fileHelper.readCSVFile(csvFilePath); // return three objects of data from csv file
 console.log(`test data at runtime:${JSON.stringify(makeApptTestData)}`);
 //access data

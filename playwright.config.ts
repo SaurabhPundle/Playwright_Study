@@ -13,13 +13,16 @@ dotenv.config({ path: path.resolve(process.cwd(), ".env") });
 console.log("Hello from config file 👏");
 
 export const baseConfig = defineConfig({
+  // Playwright expects a default export, not a named export.
+
+  // export default defineConfig({
   testDir: "./tests",
 
   globalTimeout: 3 * 60 * 60 * 1000, // 3 hrs
   timeout: 80_000,
 
   fullyParallel: false,
-  
+
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
@@ -51,9 +54,20 @@ export const baseConfig = defineConfig({
     headless: false,
     video: "off",
     trace: "retain-on-failure",
-    screenshot: "on",
+    screenshot: "only-on-failure",
     navigationTimeout: 80_000,
     actionTimeout: 10_000,
+    ignoreHTTPSErrors: true,
+    viewport: null,
+
+    launchOptions: {
+      args: [
+        //     "--disable-features=ChromeWhatsNewUI",
+        //     "--disable-infobars",
+        //     "--disable-notifications",
+        "--start-maximized",
+      ],
+    },
   },
 
   projects: [
@@ -61,20 +75,7 @@ export const baseConfig = defineConfig({
       name: "Chromium Desktop",
       use: {
         browserName: "chromium",
-        ...devices["Desktop Chrome"],
-        headless: false,
-        // viewport: null,
-
-        ignoreHTTPSErrors: true,
-
-        // launchOptions: {
-        //   args: [
-        //     "--disable-features=ChromeWhatsNewUI",
-        //     "--disable-infobars",
-        //     "--disable-notifications",
-        //     "--start-maximized",
-        //   ],
-        // },
+        // ...devices["Desktop Chrome"], // to use default desktop chrome config from playwright, but we want to override some of the default config, so we will use custom launch options above
       },
     },
 
@@ -82,18 +83,16 @@ export const baseConfig = defineConfig({
     // {
     //   name: "Firefox",
     //   use: {
-    //     ...devices["Desktop Firefox"],
-    //     ignoreHTTPSErrors: true,
+    //     ...devices["Desktop Firefox"], // Viewport : null not applied for firefox even we use custom launch options, so we need to override the viewport config for firefox     
     //   },
     // },
-//     {
-//       name: "Webkit",
-//       use: { ...devices["Desktop Safari"],ignoreHTTPSErrors: true, },
-      
-//     },
-// {
-//   name: "Galaxy A55",
-//   use:{...devices["Galaxy A55"]}
-// }
+    // {
+    //   name: "Webkit",
+    //   use: { ...devices["Desktop Safari"] }, // Viewport : null not applied for webkit even we use custom launch options, so we need to override the viewport config for webkit4
+    // },
+    // {
+    //   name: "Galaxy A55",
+    //   use:{...devices["Galaxy A55"]}
+    // }
   ],
 });

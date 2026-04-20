@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-
+import { takeFullPageScreenshot, takeElementScreenshot } from "../helpers/pw-helper";
 test.describe(
   "Make Appointment functionality",
   {
@@ -26,11 +26,11 @@ test.describe(
       await page.getByLabel("Username").press("Tab");
       await page.getByLabel("Password").fill("ThisIsNotAPassword");
       // custom screenshot for this step
-      let fullPageLoginShcreenshot = await page.screenshot({ fullPage: true });
-      await testInfo.attach("login page", {
-        body: fullPageLoginShcreenshot,
-        contentType: "image/png",
-      });
+        await takeFullPageScreenshot(page, "login page")      // let fullPageLoginShcreenshot = await page.screenshot({ fullPage: true });
+      // await testInfo.attach("login page", {
+      //   body: fullPageLoginShcreenshot,
+      //   contentType: "image/png",
+      // });
       await page.getByRole("button", { name: "Login" }).click();
     });
 

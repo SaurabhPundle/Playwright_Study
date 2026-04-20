@@ -19,5 +19,6 @@ export default defineConfig<EnvConfig>({
       dbname: "",
       connectionStr: "",
     },
+    
   },
 });
