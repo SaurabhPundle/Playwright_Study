@@ -261,6 +261,28 @@ use .not
 <thead> - table header
 <tbody> - table body
 
+* date picker
+- using date selection
+- using current day selection
+- using user define date
+
+* mouse action
+-click,right click,hover,dragAndDrop,Scroll
+
+* keyboard actions
+type, copy paste, hold shift key
+
+* file upload
+need to import path while working for files and folder --> is build in nde.js module 
+
+* organize group of test using describe
+1. features or module
+2. test type ( functional /regression /smoke)
+3. based on role -admin/cusomer
+
+* Reusable function
+
+
 
 “forEach is used to iterate through an array and execute a callback function for each element.”
 eg countOfFrames.forEach((frame) => {
@@ -298,6 +320,38 @@ RegEx,contains,?. optional chaining,?? vs ||, parseInt vs parseFloat
 * Hooks 
     - can be test level or describe level
     - most common --> describe > before each > test
+
+    beforeAll  - runs one time before all tests
+    afterAll - runs one time after all tests
+    beforeEach - runs each time before each test
+    AfterEach - runs each time after each test
+
+* Annotations
+test.describe - group related test cases
+test.skip - skip a test
+test.only - runs only this test case -used for debugging
+test.fixme - test as expected to fisl,temp ignore broken test case (skip block in result)
+test.slow - run test case slow, 3X slower (use inside test block)
+test.fail - expect to fail
+
+* Tags 
+@smoke, @regression, @ui, @api
+--grep "@tagname"
+
+* handle multiple window or tab
+ - for seperate tab playwright consider it popup
+
+ const[newTab] = await promise.all([
+    page.waitForEvent("popup");
+    page.click("locator")
+ ])
+
+ const[newWindow] = await promis.all([
+
+    context.waitForEvent("page");
+    page.click("locator")
+ ]
+
 *global setup & teardown
     - to remove allure result before execution
 * List of devices
@@ -328,6 +382,17 @@ RegEx,contains,?. optional chaining,?? vs ||, parseInt vs parseFloat
     - Reporting ()
 
     + POM > Base page(reusable actons) > Login page(Extends base pade & contains page ele & actions) > One/more spec file (call po to make test flow) > test suite(group of tests)
+
+Pom is design pattern to organize and manage webelements
+advantages 
+1. Better code organization
+2. Reusability
+3. Improved Maintanance
+4. Readability
+
+* rerun on failure 
+* sharding
+
 
     *API
     -   request --> get,post,put,patch,delete

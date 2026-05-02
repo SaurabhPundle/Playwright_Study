@@ -24,7 +24,8 @@ export const baseConfig = defineConfig({
   fullyParallel: false,
 
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
+  // retries: process.env.CI ? 2 : 0,
+  retries:2,
   workers: process.env.CI ? 1 : undefined,
 
   expect: {
