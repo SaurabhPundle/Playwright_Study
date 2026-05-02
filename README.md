@@ -121,7 +121,7 @@ You can say:
 
 ✔npx playwright test tests/path --project=cromium
 
-✔Worker 
+✔Worker - run in parallel or same machine
 A parallel test runner process that executes your tests.
 Node.js process
 Has its own:
@@ -390,8 +390,54 @@ advantages
 3. Improved Maintanance
 4. Readability
 
+* CI - continuous Integration - whenever push code in github, automation test automatically and make sure our code is correct
+* CD - continuous Delivery - the code is always in deploy ready state
+
+actions is build in CICD tool.
+
+yaml file
+
+name: Playwright Tests  -- display name
+
+on:   // when to run test
+  push:
+    branches:[main]
+  pull_request:
+    branches:[main]
+
+jobs:   // what work github should do
+  playwright-tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        shard:[1,2,3,4]
+
+      steps:  //whatever we run we want it on action tab
+      -name: Checkout code
+      uses: actions/checkout@v4
+
+      -name: Setup Node.js  // install node
+      uses: actions/setup-node@v4
+      with:
+        node-version:18
+
+      -name:Install dependencies  // order to run project
+      run:npm ci
+
+      -name:Install Playwright browsers
+      run: npx playwright install --with-deps
+
+      -name: Run playwright tests(shard ${{matrix.shard}})
+      run: npx playwright test --shard=${{matrix.shard}}/4
+
+“It’s not mandatory to create a new branch, but in industry we use feature branches so CI can validate changes before merging into main.”
+
+git checkout -b feature/playwright-actions.demo
 * rerun on failure 
-* sharding
+* sharding ( cloud machines )
+    breaking large workload in smaller independant part 
+    shard - piece of work
 
 
     *API
