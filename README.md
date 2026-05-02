@@ -434,6 +434,10 @@ jobs:   // what work github should do
 “It’s not mandatory to create a new branch, but in industry we use feature branches so CI can validate changes before merging into main.”
 
 git checkout -b feature/playwright-actions.demo
+git add .
+git commit -m "all github actions for CI"
+git push origin feature/playwright-actions.demo
+
 * rerun on failure 
 * sharding ( cloud machines )
     breaking large workload in smaller independant part 
