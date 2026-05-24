@@ -29,6 +29,27 @@ package-lock.json
 package.json
 playwright.config.ts
 
+
+** How to use programming in automation *
+
+* Ternary operators
+* Loops - It is a way to tell the computer / script repeat this task again and again
+it repeats the action without writing code again and again
+
+1) for loop
+for (let i =0;i<5;i++){
+  //code
+}
+i=0 initialization
+i<5 condition
+i++ increment
+
+2) for..of
+3) for...in
+4) while loop
+5) do while loop
+6) forEach loop
+
 * npx playwright test
 
 Code generation --> manual/codegen
@@ -44,7 +65,7 @@ globalSetup --> Run this file once before all tests start
 Used for common preparation
 eg. login once and savesession, create test data, set env variables, start server/db connection
 globalTeardown  --> Run this file once after all tests finish
-Used for cleanup
+Used for cleanup , deleting test data
 eg. delete test data, close db connection,stop server, clear cache
 
 golbalSetup --> run all tests --> globalTeardown
@@ -357,6 +378,7 @@ test.fail - expect to fail
 * List of devices
 * mobile device emulation
 * tsconfig.json => custumize project settings to align with specific requirements (compile code for given settings)
+  / centralize place to define global settings for our framework 
 
 * Data Handling
 - Constant data /static data
@@ -372,6 +394,15 @@ test.fail - expect to fail
 
 *Run parameterize test using csv
 *Logger
+
+* tracing 
+  All the actions performed by the test like click,fill, navigation
+  screenshots, DOM snapshots, Network requests, console logs and browser errors
+
+* Generate random test data
+- static - if system expect existing data 
+- dynamic - created new data - generated at runtime
+In playwright , commonly used library is faker
 
 * framework 
     core components
@@ -394,8 +425,11 @@ advantages
 * CD - continuous Delivery - the code is always in deploy ready state
 
 actions is build in CICD tool.
+- should store exact on .github\workflows playwright.yml
+- test name and describe should unique to identify
+- not consider .only
 
-yaml file
+yml file - defines when and how to run CI
 
 name: Playwright Tests  -- display name
 
@@ -438,11 +472,26 @@ git add .
 git commit -m "all github actions for CI"
 git push origin feature/playwright-actions.demo
 
+* git ignore - whatever mention in git ignore that will not go to github
+* cherry pick - taking one specific commit from one branch and applying it to another branch withou merging, should be on main branch
+git cherrypick commit alphanumeric number
+* rebase - dont want to merge but i want to take all changes on top of main branch
+git checkout feature/my-branch
+git fetch origin
+git rebase origin/main
+git push --force
+* 
+* git log --oneline  used to show list of all commits 
+
 * rerun on failure 
 * sharding ( cloud machines )
     breaking large workload in smaller independant part 
     shard - piece of work
+    
 
+*Fixtures - piece of code that sets up environment your test needs and provide ready to use resources and cleanup after run
+* emulation - making one device behave like anothe device
+* simulation - copying something
 
     *API
     -   request --> get,post,put,patch,delete

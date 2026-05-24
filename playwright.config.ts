@@ -1,7 +1,8 @@
 import { defineConfig, devices } from "@playwright/test";
 
 /* Read environment variables from .env file. See
-
+ defineConfig  - function , define and organize in structured way
+ devices - object , execute test in devices - desktop/mobile
 */
 
 import dotenv from "dotenv";
@@ -16,17 +17,17 @@ export const baseConfig = defineConfig({
   // Playwright expects a default export, not a named export.
 
   // export default defineConfig({
-  testDir: "./tests",
+  testDir: "./tests", // location of test folder
 
   globalTimeout: 3 * 60 * 60 * 1000, // 3 hrs
   timeout: 80_000,
 
-  fullyParallel: false,
+  fullyParallel: false, // multiple test run at same time
 
-  forbidOnly: !!process.env.CI,
-  // retries: process.env.CI ? 2 : 0,
-  retries:2,
-  workers: process.env.CI ? 1 : undefined,
+  forbidOnly: !!process.env.CI,  // find test.only it will fail that test case while CI
+  // retries: process.env.CI ? 2 : 0,    // CI:local
+  retries:0,  // if first time fail retry
+  workers: process.env.CI ? 1 : undefined,  // parallel processes in seperate browser instance
 
   expect: {
     timeout: 5_000,
@@ -34,7 +35,7 @@ export const baseConfig = defineConfig({
   globalSetup: require.resolve("./tests/helpers/global-setup"),
   globalTeardown: require.resolve("./tests/helpers/global-teardown"),
 
-  reporter: [
+  reporter: [  // generating test execution report type
     ["html", { open: "never" }],
     [
       "allure-playwright",
@@ -51,12 +52,12 @@ export const baseConfig = defineConfig({
     ],
   ],
 
-  use: {
+  use: {  // default settings
     headless: false,
     video: "off",
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
-    navigationTimeout: 80_000,
+    navigationTimeout: 80_000, 
     actionTimeout: 10_000,
     ignoreHTTPSErrors: true,
     viewport: null,
@@ -71,7 +72,7 @@ export const baseConfig = defineConfig({
     },
   },
 
-  projects: [
+  projects: [  // define different execution environment
     {
       name: "Chromium Desktop",
       use: {

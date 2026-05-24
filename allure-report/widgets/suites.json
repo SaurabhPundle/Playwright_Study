@@ -1,1 +1,1 @@
-{"total":1,"items":[{"uid":"c4ffbba4a556dbf04b3df20bae48f619","name":"Chromium Desktop","statistic":{"failed":1,"broken":0,"skipped":0,"passed":0,"unknown":0,"total":1}}]}
+{"total":1,"items":[{"uid":"c4ffbba4a556dbf04b3df20bae48f619","name":"Chromium Desktop","statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1}}]}

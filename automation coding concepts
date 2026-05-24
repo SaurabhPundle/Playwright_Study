@@ -1,0 +1,9 @@
+4. logical operators
+and (&&) --> multiple conditions to be true (double ampersand)
+Or (||) --> any one condition is true
+not (!) --> reverse the result of condition
+
+5. Ternary operators
+?:   - it is shortcut for writing if else , use ternary operator when logic is simple
+
+condition? runThisIfTrue : runThisIfFalse

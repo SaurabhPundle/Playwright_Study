@@ -1,6 +1,7 @@
 import { test, expect, devices } from "@playwright/test";
 import constants from "../../data/constants.json";
 import { log } from "../helpers/logger";
+// npx playwright test --config=config/test.playwright.config.ts tests/demo/myTest.spec.ts --headed
 
 test("Should load homepage with correct title", async ({ page }) => {
   await page.goto("https://katalon-demo-cura.herokuapp.com/");
@@ -41,17 +42,17 @@ test("should read constant data", async () => {
   console.log(`Constants: ${JSON.stringify(constants.STATUSCODES)}`);
 });
 
-test.only("demo of click action", async ({ page },testInfo) => {
+test("demo of click action", async ({ page },testInfo) => {
 
   await page.goto("https://katalon-demo-cura.herokuapp.com/");
-  let ele = page.getByRole("link", { name: "Make-Appointment" })
+  let ele = page.locator("#btn-make-appointment")
   // default action
   
   // await ele.click();
 
   // base page action
   try{
-              await expect(ele).toBeVisible({timeout:10_000});
+              await expect(ele).toBeVisible({timeout:20_000});
               await ele.click();
   
           }
