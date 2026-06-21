@@ -17,7 +17,7 @@ test.only("date picker", async ({ page }) => {
   );
   await frame.locator("#datepicker").click();
   await frame.locator("text='12'").click();
-  await expect(frame.locator("#datepicker")).toHaveValue("04/12/2026");
+  await expect(frame.locator("#datepicker").nth(0)).toHaveValue("06/12/2026");
 
   // pass current date
   const currentDate = new Date();
@@ -29,7 +29,7 @@ test.only("date picker", async ({ page }) => {
   const year = String(currentDate.getFullYear());
 
   const expectedDate = `${month.padStart(2, "0")}/${day.padStart(2, "0")}/${year}`;
-  await expect(frame.locator("#datepicker")).toHaveValue(expectedDate);
+  await expect(frame.locator("#datepicker").nth(0)).toHaveValue(expectedDate);
 
   const yearToSelect = "2024";
   const monthToSelect = "May";
@@ -97,7 +97,7 @@ test.only("date picker", async ({ page }) => {
   ];
   const monthNumber = String(monthNames.indexOf(monthToSelect) + 1).padStart(2, "0");
   const expectedSelectedDate = `${monthNumber}/${dayToSelect.padStart(2, "0")}/${yearToSelect}`;
-  await expect(frame.locator("#datepicker")).toHaveValue(expectedSelectedDate);
+  await expect(frame.locator("#datepicker").nth(0)).toHaveValue(expectedSelectedDate);
 
   await page.waitForTimeout(4000);
 });

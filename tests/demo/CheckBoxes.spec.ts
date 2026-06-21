@@ -25,7 +25,7 @@ test.only('check boxes in amazon',async({page})=>{
     await page.locator("//span[text()='Hardcover']").click();
     const elements =page.locator("div[data-cy='price-recipe'] a.a-text-bold").all(); // uesd to get all elements
     for (const element of await elements) {
-      await expect(element).toContainText("hardcover");
+      await expect(element).toContainText("Hardcover");
     }
 
 });

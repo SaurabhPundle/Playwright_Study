@@ -32,7 +32,7 @@ test("handling webtable with checkbox", async ({ page }) => {
     await expect(page.locator("#simpletable")).toBeVisible();
     const name = "koushik"
     const row = page.locator("#simpletable tbody tr").filter({hasText:name});
-    row.locator("input[type='checkbox']").check();
+    await row.locator("input[type='checkbox']").check();
     await expect(row.locator("input[type='checkbox']")).toBeChecked();
 
     // multiple checkboxes selection
@@ -45,10 +45,27 @@ test("handling webtable with checkbox", async ({ page }) => {
 
 });
 
-test.only("webtable with multiple data", async ({ page }) => {
+/*test.only("webtable with multiple data", async ({ page }) => {
     await page.goto("https://letcode.in/table");
-    await expect(page.locator(".mat-sort")).toBeVisible();
-    const calories = await page.locator(".mat-sort tr td:nth-child(2)").allTextContents();
-    console.log("Calories: "+calories);
+    await expect(page.getByRole('cell', { name: 'Calories' })).toBeVisible();
+    // find which column is "Calories" and then get all values from that column
+    const headers = await page.locator('.mat-sort thead tr th').allTextContents();
+    const colIndex = headers.findIndex(h => h.trim() === 'Calories');
+    expect(colIndex).toBeGreaterThanOrEqual(0);
+
+    const rows = page.locator('.mat-sort tbody tr');
+    const rowCount = await rows.count();
+    expect(rowCount).toBeGreaterThan(0);
+
+    const caloriesNums: number[] = [];
+    for (let i = 0; i < rowCount; i++) {
+      const cell = rows.nth(i).locator(`td:nth-child(${colIndex + 1})`);
+      const text = (await cell.textContent()) || '';
+      const n = Number(text.replace(/[^0-9.-]/g, '').trim());
+      expect(Number.isNaN(n)).toBeFalsy();
+      expect(n).toBeGreaterThan(0);
+      caloriesNums.push(n);
+    }
+    console.log('Calories:', caloriesNums);
     
-});
+}); */

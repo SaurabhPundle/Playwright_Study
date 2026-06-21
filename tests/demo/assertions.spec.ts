@@ -4,7 +4,7 @@ test('assertion demo', async ({ page }) => {
     await page.goto("https://www.saucedemo.com/");
     await expect(page).toHaveTitle("Swag Labs");
     await expect(page.url()).toBe("https://www.saucedemo.com/");
-    const logo = await page.locator(".login_logo");
+    const logo =  page.locator(".login_logo");
     await expect(logo).toBeVisible();
     const userName = await page.locator("#user-name");
     await expect(userName).toBeEnabled();

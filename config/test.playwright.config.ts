@@ -1,5 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
-import { baseConfig } from "../playwright.config.ts";
+import baseConfig from "../playwright.config";
 import { EnvConfig } from "../tests/helpers/config-fixtures.ts"; // import the type for config fixtures
 import path from "path";
 console.log("LOADING TEST ENVIRONMENT");

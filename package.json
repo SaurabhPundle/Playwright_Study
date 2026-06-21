@@ -12,6 +12,10 @@
     "hooks": "npx playwright test tests/demo/hooks-demo.spec.ts",
     "adv-cap": "cross-env DEBUG=pw:api npx playwright test tests/demo/adv.cap.login.spec.ts",
     "demo:tag": "npx playwright test --grep @smoke",
+    "sauce:smoke": "npx playwright test --config=tests/sauceDemoFramework/playwright.config.ts --grep @smoke",
+    "sauce:regression": "npx playwright test --config=tests/sauceDemoFramework/playwright.config.ts --grep @regression",
+    "sauce:functional": "npx playwright test --config=tests/sauceDemoFramework/playwright.config.ts --grep @functional",
+    "sauce:all": "npx playwright test --config=tests/sauceDemoFramework/playwright.config.ts",
     "screenshot": "npx playwright test tests/demo/capture.screenshot.make.aptmnt.spec.ts",
     "debug:trace": "npx playwright test tests/demo/debug.make.aptmnt.spec.ts --trace on",
     "debug:cli": "PWDEBUG=1 npx playwright test tests/demo/debug.make.aptmnt.spec.ts",
@@ -29,6 +33,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@playwright/mcp": "^0.0.76",
     "@playwright/test": "^1.54.1",
     "@types/node": "^24.0.15",
     "allure-playwright": "^3.6.0",

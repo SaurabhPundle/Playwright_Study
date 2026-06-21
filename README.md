@@ -312,7 +312,27 @@ eg countOfFrames.forEach((frame) => {
   }
 });
 
+for.. in
+enumerable properties of an object
 
+const data={ // data is object
+  name : "book",  // name and subjects are enumerable properties /key
+  subject : "physics"
+}
+syntax
+for(let key in object){
+
+}
+for(let key in data){
+  
+}
+
+for.. of
+used to go through each item in list one by one , list can be array,map or set
+syntax
+for(let value of iterable){
+
+}
 1. Element Handle
 Radio button, CheckBox, Dropdown, 
 

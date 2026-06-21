@@ -13,7 +13,7 @@ dotenv.config({ path: path.resolve(process.cwd(), ".env") });
 
 console.log("Hello from config file 👏");
 
-export const baseConfig = defineConfig({
+export default defineConfig({
   // Playwright expects a default export, not a named export.
 
   // export default defineConfig({
