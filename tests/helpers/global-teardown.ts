@@ -16,12 +16,10 @@ async function globalTeardown(config: FullConfig) {
         stdio: "inherit",
       });
 
-      execSync("allure open ./allure-report", {
-        stdio: "inherit",
-      });
-
+      // Do not automatically open the Allure report during CI or automated test runs.
+      // Open it manually only when needed.
     } catch (error) {
-      console.error("Error generating/opening Allure:", error);
+      console.error("Error generating Allure report:", error);
     }
   }
 

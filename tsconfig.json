@@ -8,6 +8,6 @@
         "noImplicitAny": false
        
     },
-    "include": ["tests/**/*.ts", "data/**/*.ts", "playwright.config.ts", "data/test-data.ts"],
+    "include": ["tests/**/*.ts", "factories/**/*.ts", "data/**/*.ts", "playwright.config.ts", "data/test-data.ts"],
     "exclude": ["node_modules", "dist"]
 }

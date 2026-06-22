@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import {createUser} from '../../factories/user.factory'
+import { createUser } from '../../factories/user.factory';
 
 test('test', async ({ page }) => {
     const user = createUser(); // create object of creat
