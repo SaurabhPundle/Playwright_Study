@@ -48,7 +48,7 @@ test.skip('Loactors Practice',async({page})=>{
   await page.locator("//a[text()='Mobiles']").click(); // locator by text in xpath
   await page.waitForTimeout(7000);
 });
-  test.only('Loactors tutorialspoint',async({page})=>{
+  test('Loactors tutorialspoint',async({page})=>{
   await page.goto("https://www.tutorialspoint.com/selenium/practice/selenium_automation_practice.php")
   const lable = page.getByLabel("Name:");
   await expect(lable).toBeVisible();

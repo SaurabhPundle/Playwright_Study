@@ -45,7 +45,7 @@ test("handling webtable with checkbox", async ({ page }) => {
 
 });
 
-/*test.only("webtable with multiple data", async ({ page }) => {
+/*test("webtable with multiple data", async ({ page }) => {
     await page.goto("https://letcode.in/table");
     await expect(page.getByRole('cell', { name: 'Calories' })).toBeVisible();
     // find which column is "Calories" and then get all values from that column

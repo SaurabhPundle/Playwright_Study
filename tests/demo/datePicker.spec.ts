@@ -10,7 +10,7 @@ test("date picker by fill", async ({ page }) => {
   await page.waitForTimeout(2000);
 });
 
-test.only("date picker", async ({ page }) => {
+test("date picker", async ({ page }) => {
   await page.goto("https://www.globalsqa.com/demo-site/datepicker/");
   const frame = page.frameLocator(
     "iframe[src='../../demoSite/practice/datepicker/default.html']",

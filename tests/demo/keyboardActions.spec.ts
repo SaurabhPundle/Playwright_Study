@@ -19,7 +19,7 @@ test("keyboard actions", async ({ page }) => {
   await page.keyboard.press("Backspace");
 });
 
-test.only('copy paste', async ({ page }) => {
+test('copy paste', async ({ page }) => {
   await page.goto("https://www.tutorialspoint.com/selenium/practice/selenium_automation_practice.php");
   await page.locator("#name").focus();
   await page.keyboard.type("Saurabh Pundle");

@@ -15,7 +15,7 @@ test("Checkbox Validation", async ({ page }) => {
   await page.locator("#c_bf_1").uncheck();
   await expect(page.locator("#c_bs_1")).not.toBeChecked();
 });
-test.only('check boxes in amazon',async({page})=>{
+test('check boxes in amazon',async({page})=>{
     await page.goto("https://www.amazon.in/");
     await page.locator("#twotabsearchtextbox").fill("books");
     await page.locator("#nav-search-submit-button").click();

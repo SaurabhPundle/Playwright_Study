@@ -16,7 +16,7 @@ test.describe("Login functionality", () => {
     ).toBeVisible();
   });
 
-  test.only("Should login successfully", async ({ page }) => {
+  test("Should login successfully", async ({ page }) => {
 
     /* 1.Just locator element  --> Lazy
       No action proves that element is lazy

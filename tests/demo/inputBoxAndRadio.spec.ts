@@ -33,7 +33,7 @@ const errorText = await errorLabel.textContent();
     await page.waitForTimeout(4000);
 });
 
-test.only('radioButton', async ({ page }) => {
+test('radioButton', async ({ page }) => {
    
     await page.goto("https://www.tutorialspoint.com/selenium/practice/selenium_automation_practice.php");
     await page.locator("#headingOne .accordion-button.collapsed").click();

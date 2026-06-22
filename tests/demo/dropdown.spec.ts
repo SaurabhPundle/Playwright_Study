@@ -60,7 +60,7 @@ test("custom dropdown", async ({ page }) => {
   ).toHaveText("Cancelled");
 });
 
-test.only("searchable dropdown", async ({ page }) => {
+test("searchable dropdown", async ({ page }) => {
     await page.goto("https://www.amazon.in/");
     await page.getByPlaceholder("Search Amazon.in").fill("book");
     await page.waitForSelector(".two-pane-results-container"); // auto search result

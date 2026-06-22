@@ -46,7 +46,7 @@ const frameRight = countOfFrames[4]; //index
 await expect(frameRight.locator("h1")).toHaveText("Right");
 });
 
-test.only('handling nested frames',async({page})=>{
+test('handling nested frames',async({page})=>{
 
 await page.goto("https://play1.automationcamp.ir/frames");
 const parentFrame = page.frameLocator("#frame1") // using id of frame

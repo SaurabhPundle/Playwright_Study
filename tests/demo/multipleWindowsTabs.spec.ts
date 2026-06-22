@@ -21,7 +21,7 @@ console.log("new tab url is " + newTab.url());
 
 });
 
-test.only("Multiple windows" , async({page:Page})=>
+test("Multiple windows" , async({page:Page})=>
 {
     const browser = await chromium.launch({headless: false});
     const context =await browser.newContext();

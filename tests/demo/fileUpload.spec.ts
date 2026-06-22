@@ -9,7 +9,7 @@ test("single file upload", async ({ page }) => {
     path.join(process.cwd(), "data", "uploads", "one.txt"),
   );
 });
-test.only("multiple file upload", async ({ page }) => {
+test("multiple file upload", async ({ page }) => {
   await page.goto("http://uitestingplayground.com/upload");
   const file1 = path.join(process.cwd(), "data", "uploads", "one.txt");
   const file2 = path.join(process.cwd(), "data", "uploads", "two.txt");

@@ -14,7 +14,7 @@ test("Ternary operator",async({page})=>{
     : console.log("Login is not successful")
 })
 
-test.only("ternary 2 with amazon",async({page})=>{
+test("ternary 2 with amazon",async({page})=>{
     await page.goto("https://www.amazon.in");
     await page.getByPlaceholder("Search Amazon.in").fill("pen");
     await page.keyboard.press("Enter");
