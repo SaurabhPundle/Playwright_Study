@@ -28,7 +28,7 @@ export default defineConfig({
   // retries: process.env.CI ? 2 : 0,    // CI:local
   retries:0,  // if first time fail retry
   workers: process.env.CI ? 1 : undefined,  // parallel processes in seperate browser instance
-
+  
   expect: {
     timeout: 5_000,
   },
@@ -53,7 +53,7 @@ export default defineConfig({
   ],
 
   use: {  // default settings
-    headless: false,
+    headless: process.env.CI ? true : false,
     video: "off",
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
