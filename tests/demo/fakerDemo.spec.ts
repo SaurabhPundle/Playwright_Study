@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { createUser } from '../../factories/user.factory';
 
 test('test', async ({ page }) => {
-    const user = createUser(); // create object of creat
+    const user = await createUser(); // create object of creat
   await page.goto('https://automationexercise.com/signup');
   await page.getByRole('textbox', { name: 'Name' }).click();
   await page.getByRole('textbox', { name: 'Name' }).fill(user.name);

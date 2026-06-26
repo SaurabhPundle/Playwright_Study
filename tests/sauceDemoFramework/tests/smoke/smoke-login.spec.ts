@@ -2,7 +2,7 @@ import { test, expect } from '../../fixtures/test-fixtures';
 
 test.describe('Sauce Demo Smoke Tests', () => {
   test('standard user can login and view inventory', {
-    tags: ['@smoke', '@regression'],
+    tag: '@smoke',
   }, async ({ loginPage, productsPage, sauceDemoData }) => {
     await test.step('Navigate to the login page', async () => {
       await loginPage.goto();

@@ -2,7 +2,7 @@ import { test, expect } from '../../fixtures/test-fixtures';
 
 test.describe('Sauce Demo Functional Tests', () => {
   test('complete checkout for a single product', {
-    tags: ['@functional'],
+    tag: '@functional',
   }, async ({ loginPage, productsPage, cartPage, checkoutPage, sauceDemoData }) => {
     await loginPage.goto();
     await loginPage.assertLoginPageVisible();

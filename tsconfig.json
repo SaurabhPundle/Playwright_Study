@@ -1,10 +1,11 @@
 {
     "compilerOptions": {
         "target": "ESNext",
-        "module": "commonjs",
+        "module": "node16",
+        "moduleResolution": "node16",
         "resolveJsonModule": true,
         "esModuleInterop": true,
-        "strict": false,
+        "allowSyntheticDefaultImports": true,        "skipLibCheck": true,        "strict": false,
         "noImplicitAny": false
        
     },

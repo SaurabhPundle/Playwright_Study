@@ -2,7 +2,7 @@ import { test, expect } from '../../fixtures/test-fixtures';
 
 test.describe('Sauce Demo Regression Tests', () => {
   test('add product to cart and validate cart contents', {
-    tags: ['@regression'],
+    tag: '@regression',
   }, async ({ loginPage, productsPage, cartPage, sauceDemoData }) => {
     await loginPage.goto();
     await loginPage.assertLoginPageVisible();
