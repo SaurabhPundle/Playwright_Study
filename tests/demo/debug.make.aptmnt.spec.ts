@@ -20,9 +20,7 @@ test.describe("Make Appointment functionality", () => {
     await page.getByRole("button", { name: "Login" }).click();
   });
 
-  test("Should make an appointment with non-default values", async ({
-    page,
-  }) => {
+  test("Should make an appointment with non-default values", async ({page}) => {
     // dropdown
     await page
       .getByLabel("Facility")
@@ -34,15 +32,18 @@ test.describe("Make Appointment functionality", () => {
     //   radio button
     await page.getByText("Medicaid").click();
     // data input box
-    await page.getByRole("textbox", { name: "Visit Date (Required)" }).click();
-    await page
-      .getByRole("textbox", { name: "Visit Date (Required)" })
-      .fill("05/10/2027");
-      
-    // await page
-    //   .getByRole("textbox", { name: "Visit Date (Required)" })
-    //   .press("Enter");
-    await page.getByRole("textbox", { name: "Visit Date (Required)" }).click();
+    // Use direct DOM assignment and dispatch input/change events because the UI datepicker
+    // clears the value when filled through the normal Playwright fill() path.
+    await page.evaluate(() => {
+      const input = document.querySelector<HTMLInputElement>("#txt_visit_date");
+      if (input) {
+        input.value = "05/10/2027";
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+    });
+    await expect(page.locator("#txt_visit_date")).toHaveValue("05/10/2027");
+
     // multiline comment box
     await page.getByRole("textbox", { name: "Comment" }).click();
 

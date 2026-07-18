@@ -7,7 +7,7 @@ test('assertion1',async({page})=>{
     await page.locator("#name").fill("Test User")
     await expect(page.locator("#email")).not.toHaveValue("testexample@gmail.com")
     await page.locator("#email").fill("testexample@gmail.com")
-    await expect.soft(page.locator("#name")).toHaveValue("Test User_1")
+    await expect.soft(page.locator("#name")).toHaveValue("Test User")
     await page.locator("#gender").check(); // used for radio button & check box
     await expect(page.locator("#gender")).toBeChecked(); 
     await page.locator("#hobbies").check();

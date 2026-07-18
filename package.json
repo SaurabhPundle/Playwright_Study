@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    
     "test:nopcome2e": "npx playwright test --config=config/test.playwright.config.ts tests/e2e/nopcom.e2e.spec.ts --headed",
+    "auth:nopcom": "node scripts/save-nopcom-auth.js",
     "play2": "cross-env RUNNER=LOCAL npx playwright test debug/play2.ts",
     "dev:make-aptmnt": "npx playwright test --config=config/dev.playwright.config.ts tests/functional/make.aptmnt.spec.ts",
     "test:make-aptmnt": "npx playwright test --config=config/test.playwright.config.ts tests/functional/make.aptmnt.spec.ts",

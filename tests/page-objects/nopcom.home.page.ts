@@ -1,9 +1,9 @@
-import{ expect } from "@playwright/test";
+import{ expect, Page } from "@playwright/test";
 import BasePage from "./base.page";
 import { log } from "../helpers/logger";
 export default class HomePage extends BasePage {
   // Constructor
-  constructor(page) {
+  constructor(page: Page) {
     super(page);
   }
 

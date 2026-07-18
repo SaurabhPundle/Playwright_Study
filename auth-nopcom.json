@@ -1,0 +1,51 @@
+{
+  "cookies": [
+    {
+      "name": "cf_clearance",
+      "value": "g1gGXaZluWaQ0r7pR7MVfIS2eA9KPc3VMK2HVRH_aMs-1782644136-1.2.1.1-IHZJM9sGHKtp9uA8PBJ.WwoKNREYz.WshOaBPwQReDjKmRMpkw.ZJoMeK7qJJbbk69YeK882d5.pB2LulCDLHM_YMEsYZdBPN5wXPPL5lklZOMPXLSt2uX23S220j5UCmBrr0D0Dr9.MVVnTfB7QDQ8.psRfWt2Syj17E.YnK9I3tzIujRbZm6BPXgNKyGFM9dcrdX7MFL4UfvaTOtuJriqSKIukU1.OoYQoOoF1YfH0KRlwftRkKHk65TuJ9R4Rt1O6jwbAgwfJNJaEHBO2vJePtN.CZJfUEZwubK99qclWyccwp0lRLcRKR50ovjvCKxf1uC1o2v0R023vThBcWa1I_pxls6RlRKIHY2gV9tNPfiYwUG_a.bUq707F9elafHcLzA91XOkMqOPmxuvOoY437YHbTQ5tQp5iqXNnBYxNyDRN6q0yyxrhtNgpp4nLzCkqB50TouRGfU2dqcBRXrBHqwXDHzK8MAqtiKHwIFkKZ4eYIBvHjEiN_uoCn98R6pWjNHWqjucWSkbxdsSBmPi8hyMYoQZsHNZ9M6HEtefVVW7R5QiWubgwMx282hmv6IKgDE7pECACDOkUvrqBtgxUegovfoOcKgFNycsXEqqiMVOaXgW_5wuuuATxzsU95FCcMROlfgCyr29Tn6dSWpKlhTs7XqOolNwHK63rrGD5tcI0RFG4DGLBeoYm9VGw",
+      "domain": ".cloudflare.com",
+      "path": "/",
+      "expires": 1814180135.866237,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None",
+      "partitionKey": "https://nopcommerce.com",
+      "_crHasCrossSiteAncestor": true
+    },
+    {
+      "name": "cf_clearance",
+      "value": "G_.ytyovigUmPCn1a07ZFlKwG3duOoH.NCakGT3sg.U-1782644280-1.2.1.1-K0UJFJYE54WvAqGCkzY5EHJtcrsO7nSx.UskfMn3jJQBP4iL0BKnzpZpcPGofNC_tHNgdBTpliDpeAqTarxaslxDy7PaQdJdXnmw_BeWNsA0PGxGA7JWhWxc7YJM6WWE934wMsuCzefA2GYOA4kOcB79FbR5yEEApYUaE3hJlg4W1Lr_minD5XHE9sBWXx.ka5FU.j2EqC_gl61x7r8DKe2Jlpg0cN4c09ub4JLJeIdMP4rJSl24cSY.EJuhUAtkZMKD0aPweTQaM_eoulChYzmKa1dxcqf8K8DeuZKuQeiZGGQn3AbrzxRiIUxSyywiECAHHeyqmCleEfxl5RFHy.NFxiKCPjx_DEYhdGwJUouo0jf8ApAgLhZV3H_WqFLyF6WMpAf8sZqzdwQ0c6iAW3OwEEEdgzZZ55pkojf6HXC0Lt_pM_6yTZRttNMukHu97xA6By_PYvWmoiwWwdcPsYlirdAtrPBvyM_aLoTCLd7m35IsD1ZAEvRqFzb.n4hn",
+      "domain": ".nopcommerce.com",
+      "path": "/",
+      "expires": 1814180279.598838,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None",
+      "partitionKey": "https://nopcommerce.com",
+      "_crHasCrossSiteAncestor": false
+    },
+    {
+      "name": "cf_chl_rc_ni",
+      "value": "14",
+      "domain": "admin-demo.nopcommerce.com",
+      "path": "/",
+      "expires": 1782647879,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None",
+      "partitionKey": "https://nopcommerce.com",
+      "_crHasCrossSiteAncestor": false
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://challenges.cloudflare.com",
+      "localStorage": [
+        {
+          "name": "cf.turnstile.u",
+          "value": "XyESJY6eptYngZmutwdbOeVgno_BEIVA4b_Xy7KbRZs-1782639649-1.3.1.1-xoeoRCujKzrw.6J4ewnMK32cUjPPVvl4tcU8JrOU4ueP8LiD1GDdG4_W3hW5fijlfVAhsOkB.O7zaf.mHOGmzA"
+        }
+      ]
+    }
+  ]
+}

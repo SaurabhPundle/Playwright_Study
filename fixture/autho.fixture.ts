@@ -1,4 +1,4 @@
-import {test as base , expect, Page} from '@playwright/test' // renaming test as base to extend test
+import {test as base , expect, Page} from '@playwright/test' // renaming/alias test as base to extend test
 
 type myFixture = {
     loggedInUser : Page;
